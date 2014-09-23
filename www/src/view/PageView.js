@@ -7,6 +7,7 @@ define(function(require, exports, module) {
      var ImageSurface    = require('famous/surfaces/ImageSurface');
      var FastClick       = require('famous/inputs/FastClick');
      var SlideView = require('view/SlideView');
+     var ContainerSurface = require('famous/surfaces/ContainerSurface');
 
      function PageView() {
          View.apply(this, arguments);
@@ -44,10 +45,17 @@ define(function(require, exports, module) {
      }
 
      function _createBody () {
+        this.container = new ContainerSurface({
+            properties: {
+                overflow: 'hidden'
+            }
+        });
+
      	this.createLightbox = new SlideView({
      		data: this.options.data
      	});
 
+        this.add(this.container);
      	this.add(this.createLightbox);
      }
 
