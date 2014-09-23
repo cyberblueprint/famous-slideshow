@@ -56,8 +56,8 @@ define(function(require, exports, module) {
      		data: this.options.data
      	});
 
-        this.add(this.container);
-     	this.add(this.createLightbox);
+        this.add(this.createLightbox);
+     	this.container.add(this.createLightbox);
      }
 
      function _createHeader() {
