@@ -109,7 +109,7 @@ define(function(require, exports, module) {
 
     function _setListeners () {
         this.hamburgerSurface.on('click', function() {
-            console.log('Hey You!');
+            this._eventOutput.emit('menuToggle');
         }.bind(this));
 
     }
