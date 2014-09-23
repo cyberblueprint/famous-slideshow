@@ -112,6 +112,8 @@ define(function(require, exports, module) {
             this._eventOutput.emit('menuToggle');
         }.bind(this));
 
+        this.container.pipe(this._eventOutput);
+
     }
  
      module.exports = PageView;

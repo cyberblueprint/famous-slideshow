@@ -48,7 +48,7 @@ define(function(require, exports, module) {
         }
     }
 
-    Menu.prototype.resetStrips = function() {
+    Menu.prototype.resetItems = function() {
         for(var i = 0; i < this.menuItemModifier.length; i++) {
             var initX = -this.options.stripWidth;
             var initY = this.options.topOffset
@@ -59,8 +59,8 @@ define(function(require, exports, module) {
         }
     };
 
-    Menu.prototype.animateStrips = function() {
-        this.resetStrips();
+    Menu.prototype.animateItems = function() {
+        this.resetItems();
 
         var transition = this.options.transition;
         var delay = this.options.staggerDelay;
