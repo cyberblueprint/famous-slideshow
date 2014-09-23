@@ -8,6 +8,10 @@ define(function(require, exports, module) {
      var DataValues = require('data/DataValues');
 
      var Easing = require('famous/transitions/Easing');
+     var Menu = require('view/Menu');
+
+     var ItemData = require('data/ItemData');
+
 
      function AppView() {
          View.apply(this, arguments);
@@ -15,7 +19,9 @@ define(function(require, exports, module) {
          this.menuToggle = false;
  
          _createPageView.call(this);
+         _createMenu.call(this);
          _setListeners.call(this);
+
      }
  
      AppView.prototype = Object.create(View.prototype);
@@ -36,6 +42,18 @@ define(function(require, exports, module) {
  
          this.add(this.pageModifier).add(this.pageView);
      }
+
+     function _createMenu() {
+         this.menu = new Menu({ itemData: ItemData });
+ 
+         var menuModifier = new StateModifier({
+             transform: Transform.behind
+         });
+ 
+         this.add(menuModifier).add(this.menu);
+     }
+ 
+
 
      function _setListeners () {
         this.pageView.on('menuToggle', this.toggleMenu.bind(this));
