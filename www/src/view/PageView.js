@@ -15,6 +15,7 @@ define(function(require, exports, module) {
          _createLayout.call(this);
          _createHeader.call(this);
          _createBody.call(this);
+         _setListeners.call(this);
      }
  
      PageView.prototype = Object.create(View.prototype);
@@ -104,6 +105,13 @@ define(function(require, exports, module) {
         this.layout.header.add(hamburgerModifier).add(this.hamburgerSurface);
         this.layout.header.add(searchModifier).add(searchSurface);
         this.layout.header.add(iconModifier).add(iconSurface);
+    }
+
+    function _setListeners () {
+        this.hamburgerSurface.on('click', function() {
+            console.log('Hey You!');
+        }.bind(this));
+
     }
  
      module.exports = PageView;
