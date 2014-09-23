@@ -28,7 +28,7 @@ define(function(require, exports, module) {
         this.rootModifier = new StateModifier({
             size: this.options.size,
             origin: [0.5, 0],
-            align: [0.5, 0]
+            align: [0.5, 0.1]
         });
 
         this.mainNode = this.add(this.rootModifier);
