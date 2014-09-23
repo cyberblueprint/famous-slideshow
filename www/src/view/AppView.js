@@ -7,6 +7,8 @@ define(function(require, exports, module) {
      var PageView = require('view/PageView');
      var DataValues = require('data/DataValues');
 
+     var Easing = require('famous/transitions/Easing');
+
      function AppView() {
          View.apply(this, arguments);
 
@@ -20,9 +22,14 @@ define(function(require, exports, module) {
      AppView.prototype.constructor = AppView;
  
      AppView.DEFAULT_OPTIONS = {
-     	data: undefined
+     	data: undefined,
+     	openPosition: 276,
+         transition: {
+             duration: 450,
+             curve: Easing.inOutBack
+         }
      };
- 
+     
      function _createPageView() {
          this.pageView = new PageView({ data: DataValues});
          this.pageModifier = new StateModifier();
@@ -46,17 +53,11 @@ define(function(require, exports, module) {
      };
  
      AppView.prototype.slideRight = function() {
-         this.pageModifier.setTransform(Transform.translate(276, 0, 0), {
-             duration: 300,
-             curve: 'easeOut'
-         });
+         this.pageModifier.setTransform(Transform.translate(this.options.openPosition, 0, 0), this.options.transition);
      };
  
      AppView.prototype.slideLeft = function() {
-         this.pageModifier.setTransform(Transform.translate(0, 0, 0), {
-             duration: 300,
-             curve: 'easeOut'
-         });
+         this.pageModifier.setTransform(Transform.translate(0, 0, 0), this.options.transition);
      };
  
  
