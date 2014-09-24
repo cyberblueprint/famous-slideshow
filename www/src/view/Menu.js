@@ -4,7 +4,8 @@ define(function(require, exports, module) {
     var Transform = require('famous/core/Transform');
 	var StateModifier = require('famous/modifiers/StateModifier');
     var MenuItem = require('view/MenuItem');
-
+	var Timer = require('famous/utilities/Timer');
+	
     Menu.prototype = Object.create(View.prototype);
     Menu.prototype.constructor = Menu;
 

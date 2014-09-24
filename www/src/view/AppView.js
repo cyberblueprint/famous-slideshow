@@ -83,8 +83,10 @@ define(function(require, exports, module) {
 
         sync.on('update', function(data) {
              var currentPosition = this.pageViewPos.get();
-
-            // this.pageViewPos.set(currentPosition + data.delta);
+             if(currentPosition === 0 && data.velocity > 0) {
+                this.menu.animateItems();
+             }
+             // this.pageViewPos.set(currentPosition + data.delta);
              this.pageViewPos.set(Math.max(0, currentPosition + data.delta));
         }.bind(this));
 
@@ -115,6 +117,7 @@ define(function(require, exports, module) {
              this.slideLeft();
          } else {
              this.slideRight();
+             this.menu.animateItems();
          }
          this.menuToggle = !this.menuToggle;
      };
